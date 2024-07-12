@@ -54,8 +54,6 @@ bool validate_json_object_properties(const std::string& json_input) {
     bool expect_colon {false};
     bool expect_property {false};
     bool expect_value {false};
-    bool verify_true = false;
-    bool verify_false = false;
 
     for (size_t i = 0; i < json_input.size(); ++i) {
         char ch = json_input[i];
@@ -162,7 +160,7 @@ bool is_empty_list(const std::string& input) {
     return input[0] == '[' && input[input.size() - 1] == ']';
 }
 
-bool JSON_PARSER::parse_json(std::string json_input) {
+bool JSON_PARSER::parse_json(const std::string& json_input) {
     bool valid_object = is_valid_json_object(json_input);
     bool valid_list = is_valid_json_list(json_input);
     if (valid_object) {
